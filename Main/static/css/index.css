@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 80%;
+    min-height: 500px;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+    padding-bottom: 50px;
+}
+
+.title{
+    padding-top: 50px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    color:rgb(005, 033, 092);
+}
+
+.user_input{
+    width: 60%;
+    height: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid rgb(219, 227, 231);
+    border-radius: 10px;
+}
+
+input::-webkit-input-placeholder{
+    font-size: 18px;
+    color: rgb(144, 155, 160);
+}
+
+input:focus{
+    outline: none;
+    font-size: 18px;
+    border: 2px solid rgb(001, 093, 178);
+}
+
+.result_container{
+    width: 60%;
+    margin: 0 auto;
+}
+
+h2{
+    padding-bottom: 15px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(001, 093, 178);
+}
+
+li, p{
+    padding-left: 10px;
+    padding-bottom: 12px;
+    list-style: none;
+    line-height: 25px;
+    text-align: left;
+    font-size: 20px;
+    color:rgb(005, 033, 092);
+}
+
+p{
+    text-align: center;
+    line-height: 30px;
+}
+
+.alternative_list, .daliy_list{
+    text-align: center;
+}
+
+.alternative_list a:hover{
+    color: rgb(27, 103, 175);
+}
+
+h3{
+    padding-bottom:15px;
+    color: rgb(27, 103, 175);
+}
+
+.daliy_list a {
+    color: rgb(001, 093, 178);
+    text-decoration:none;
+}
+
+.daliy_list a:hover{
+    color: rgba(27, 103, 175, 0.7);
+}

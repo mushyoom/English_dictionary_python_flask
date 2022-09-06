@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}検索履歴｜{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css')}}">
+{% endblock %}
+
+<!-- 検索履歴ページに、ナビゲーションに検索ボックスを追加します： -->
+{% block search_box %}
+<form action="/words" class="input" method="GET">
+    <input type="text"  class="input_at_his" name="search_word" placeholder="英単語を入力し、Enterキーを押してください" required>
+</form>
+{% endblock %}
+
+<body>
+    {% block content %}
+    <div class="history_container">
+    <!-- 検索履歴ページの本番内容： -->
+   
+    <h2>検索履歴</h2>
+        <div class ="btn_box">
+            <form action="/history/download_excel/" method="GET">
+            <button name="download_excel" type="submit">履歴出力（.csv）</button>
+            </form>
+
+            <form action="/history/download_txt/" method="GET">
+            <button name="download_txt" type="submit">履歴出力（.txt）</button>
+            </form>
+
+            <form action="/delete_history/" method="post">
+            <button name="delete_btn" type="submit">履歴削除</button>
+            </form>
+        </div>
+
+        {% for item in word_history%}
+        <div class="box">
+            <div class="index">{{ loop.index }}</div>
+            <div class="wordbox">{{ item[0]  }}</div>
+            <div class="state">
+            {% for discription in item[1]%}
+            <div class="description">
+                ・{{ discription }}
+            </div>
+            
+            {% endfor %}
+        </div>
+        </div>
+        {% endfor %} 
+    
+</div>
+{% endblock %}
+
+</body>
+</html>

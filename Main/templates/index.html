@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+{% endblock %}
+
+<body>
+    {% block content %}
+    <div class="container">
+        <p class="title">簡易英英辞典</p>
+        <form action="/words" method="GET">
+            <input type="text" class="user_input" name="search_word" placeholder="英単語を入力し、Enterキーを押してください" onkeydown = 'nodisplay()' required>
+        </form>
+    <div class="result_container">
+        <h2>{{ result_word }}</h2>
+        <p>{{ notfound_statement }}</p>
+            {% if search_result|length> 1 %}
+                {% for result_item in search_result :%}
+                    <li>
+                        <span>{{ loop.index }}. </span>{{ result_item }}
+                    </li>         <!--テンプレートにpython-jinjiaのloopを書く時,loop.indexで各項目番号を表示させる-->   
+                {% endfor %}
+            {% else %}
+                {% for result_item in search_result :%}
+                <p>{{ result_item }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% for result_item in alternative_list :%}
+            <li class="alternative_list"><a href="/words?search_word={{result_item}}">{{ result_item }}</a></li>
+            {% endfor %}
+        </div>
+
+        <div class="daliy_words">
+            <h3>{{ statement }}</h3>
+            {% for random_item in random_words :%}
+            <li class="daliy_list"><a href="/words?search_word={{random_item}}"> {{ random_item }} </a></li>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endblock %}
+
+</body>
+</html>

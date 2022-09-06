@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(219, 227, 231)
+}
+
+/* ナビゲーション */
+.container-fluid{
+    width: 100%;
+    height: 60px;
+    background-color: rgb(001, 093, 178);
+}
+
+.brand-title{
+    display: inline-block;
+    padding-left: 70px;
+    line-height: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.search_history{
+    float: right;
+    padding-right: 70px;
+    line-height: 60px;
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+}
+.search_history:hover{
+    text-decoration:underline;
+    color: rgb(197, 220, 241);
+}
+
+/* フッター */
+footer{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: rgb(229, 239, 248);
+    background-color: rgb(27, 103, 175);
+}
+
+footer a {
+    color: rgb(229, 239, 248);
+}
+
+footer a:hover {
+    color: rgb(197, 220, 241);
+}
