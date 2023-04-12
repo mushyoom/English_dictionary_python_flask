@@ -19,7 +19,7 @@ rever_norepeat_history = []
 def homepage():
     random_word = random.sample(list(data.keys()),3)        #辞書リストから任意の３つの単語をランダムで抽出する
     statement = "Daily Words: 下記の単語、知っていますか？"
-    print(random_word)
+    # print(random_word)
     return render_template("index.html", random_words = random_word, statement = statement)
 
 @app.route("/words", methods = ["POST", "GET"])
@@ -27,7 +27,7 @@ def search():
     if request.method == "GET":
         word = request.args.get("search_word")
         result = search_word_function(word)
-        print(result)
+        # print(result)
         
         if isinstance(result,str):
             return render_template("index.html", notfound_statement = result)
@@ -41,22 +41,22 @@ def search():
     
 @app.route("/history/")
 def history():
-    print("history功能被使用")
+    # print("history功能被使用")
     norepeat_history = removerepe()
     return render_template("history.html", word_history = norepeat_history)
 
 @app.route("/delete_history/", methods = ["POST"])
 def delete_history():
-    print("delete_history功能被使用")
+    # print("delete_history功能被使用")
     global search_history 
     global rever_norepeat_history
     search_history = []
     rever_norepeat_history = []
-    print("履历全部清除完毕！！")
-    print("search_history是：")
-    print(search_history)
-    print("rever_norepeat_history是：")
-    print(rever_norepeat_history)
+    # print("履历全部清除完毕！！")
+    # print("search_history是：")
+    # print(search_history)
+    # print("rever_norepeat_history是：")
+    # print(rever_norepeat_history)
     return render_template("history.html")
 
 @app.route("/history/download_excel/", methods = ["GET"])
@@ -86,26 +86,26 @@ def search_word_function(word):
     key_list = list(data.keys())
     value_list = list(data.values())
 
-    if word in data.keys():
+    if word in list(data.keys()):
         position = value_list.index(data[word])
         return [key_list[position],data[word]]
-    elif word.lower() in data.keys():
+    elif word.lower() in list(data.keys()):
         position = value_list.index(data[word.lower()])
         return [key_list[position], data[word.lower()]]
-    elif word.title() in data.keys():
+    elif word.title() in list(data.keys()):
         position = value_list.index(data[word.title()])
         return [key_list[position], data[word.title()]]
-    elif word.upper() in data.keys():
+    elif word.upper() in list(data.keys()):
         position = value_list.index(data[word.upper()])
         return [key_list[position], data[word.upper()]]
-    elif len(get_close_matches(word,data.keys()))>0:
+    elif len(get_close_matches(word,list(data.keys())))>0:
         statement = "「%s」が見つかりませんでした。もしかして:"%word
-        return [word, statement, get_close_matches(word, data.keys())[:3]]
+        return [word, statement, get_close_matches(word, list(data.keys()))[:3]]
     else:
         return "すみません。「%s」が見つかりませんでした。入力した単語をもう一度ご確認ください。"%word
 
 def removerepe():
-    print("removerepe功能被使用")
+    # print("removerepe功能被使用")
     global search_history
     global rever_norepeat_history
     list = []
@@ -113,8 +113,8 @@ def removerepe():
         if item not in list:
             list.append(item)
     rever_norepeat_history = list[::-1]     #検索順で一番最近検索したものを上位順にするので、listを逆順にした
-    print("removerepe功能返回的rever_norepeat_history是：")
-    print(rever_norepeat_history)
+    # print("removerepe功能返回的rever_norepeat_history是：")
+    # print(rever_norepeat_history)
     return rever_norepeat_history
 
 def getToday():
